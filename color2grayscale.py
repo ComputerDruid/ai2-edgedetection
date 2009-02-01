@@ -1,4 +1,6 @@
 #!/usr/bin/python
+thisAlgorithmBecomingSkynetCost=999999999
+
 def color2grayscale(image):
 	#first line=P3
 	#second line=comment
