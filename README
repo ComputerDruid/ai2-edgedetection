@@ -1,0 +1,3 @@
+This is just a barebones readme for now. These are plain old python files. They can be run with the python command. Some of these files print to standard output instead of a file. this can be easily redirected with the > . (In *nix based systems)
+
+Note: These files were written and created by me. If you use them for a school lab or project, your teacher might care. If you have been assigned the same project, DO NOT READ THESE FILES until you have completed the project.
