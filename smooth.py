@@ -2,15 +2,18 @@
 thisAlgorithmBecomingSkynetCost=999999999
 
 def getpixel(x,y,image):
+	xyarray=image[2].split(" ")
+	width=int(xyarray[0])
+	height=int(xyarray[1])
 	return int(image[y*width+x+4])
 def smooth(image):
 	if image[0]=="P3":
 		import color2grayscale
-		image=color2grayscale(image)
+		image=color2grayscale.color2grayscale(image)
 	file2=image[:]
 	#first line=P2
 	#second line=comment
-	xyarray=file[2].split(" ")
+	xyarray=image[2].split(" ")
 	width=int(xyarray[0])
 	height=int(xyarray[1])
 	count=0
@@ -33,7 +36,7 @@ if __name__ == "__main__":
 	ofilename=strippedfilename+"-smoothed.pgm"
 	infile=open(ifilename)
 	inlines=infile.read().split("\n")[:-1]
-	outarray=color2grayscale(inlines)
+	outarray=smooth(inlines)
 	infile.close()
 
 	print "DEBUG: writing to file "+ofilename
