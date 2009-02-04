@@ -32,7 +32,7 @@ def edgedetect(image):
 	return file2
 if __name__ == "__main__":
 	import sys
-	ifilename="italy-smoothed.pgm"
+	ifilename="italy.ppm"
 	for opts in sys.argv:
 		if opts == "--help" or opts== "-h":
 			print "syntax: edgedetect [inputfile] [threshold]"
