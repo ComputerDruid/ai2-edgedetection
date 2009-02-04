@@ -35,19 +35,21 @@ if __name__ == "__main__":
 	ifilename="italy-smoothed.pgm"
 	for opts in sys.argv:
 		if opts == "--help" or opts== "-h":
-			print "syntax: edgedetect [inputfile]"
+			print "syntax: edgedetect [inputfile] [threshold]"
 			quit()
 	if len(sys.argv)>1:
 		ifilename=sys.argv[1]
+	if len(sys.argv)>2:
+		threshold=int(sys.argv[2])
 	strippedfilename=ifilename
 	if ifilename[-4:]==".ppm" or ifilename[-4:]==".pgm":
 		strippedfilename=ifilename[:-4]
 	infile=open(ifilename)
 	inlines=infile.read().split("\n")[:-1]
 	if inlines[0]=="P3":
-		ofilename=strippedfilename+"-edges.ppm"
+		ofilename=strippedfilename+"-edges-"+str(threshold)+".ppm"
 	else:
-		ofilename=strippedfilename+"-edges.pgm"
+		ofilename=strippedfilename+"-edges-"+str(threshold)+".pgm"
 	outarray=edgedetect(inlines)
 	infile.close()
 
