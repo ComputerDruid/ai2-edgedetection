@@ -1,12 +1,15 @@
 #!/usr/bin/python
 thisAlgorithmBecomingSkynetCost=999999999
 threshold=255
+pixelcount=0
+pixelnum=0
 def getpixel(x,y,image):
 	xyarray=image[2].split(" ")
 	width=int(xyarray[0])
 	height=int(xyarray[1])
 	return int(image[y*width+x+4])
 def edgedetect(image):
+	global pixelsum, pixelcount
 	oldimage=image
 	if image[0]=="P3":
 		import smooth
@@ -23,12 +26,14 @@ def edgedetect(image):
 			hg=int(-1*getpixel(x-1,y-1,image)+0*getpixel(x,y-1,image)+1*getpixel(x+1,y-1,image)-2*getpixel(x-1,y,image)+0*getpixel(x,y,image)+2*getpixel(x+1,y,image)-1*getpixel(x-1,y+1,image)+0*getpixel(x,y+1,image)+1*getpixel(x+1,y+1,image))
 			vg=int(1*getpixel(x-1,y-1,image)+2*getpixel(x,y-1,image)+1*getpixel(x+1,y-1,image)+0*getpixel(x-1,y,image)+0*getpixel(x,y,image)+0*getpixel(x+1,y,image)-1*getpixel(x-1,y+1,image)-2*getpixel(x,y+1,image)-1*getpixel(x+1,y+1,image))
 			if(abs(hg)+abs(vg)>threshold):
+				pixelcount+=1
 				if oldimage[0]=="P3":
 					file2[(width*y+x)*3+4]=255
 					file2[(width*y+x)*3+5]=0
 					file2[(width*y+x)*3+5]=0
 				else:
 					file2[width*y+x+4]=255
+	pixelsum=width*height
 	return file2
 if __name__ == "__main__":
 	import sys
@@ -58,4 +63,5 @@ if __name__ == "__main__":
 	for i in outarray:
 		outfile.write(str(i)+"\n")
 	outfile.close()
+	print "%d/%d pixels detected as edges"%(pixelcount,pixelsum)
 
