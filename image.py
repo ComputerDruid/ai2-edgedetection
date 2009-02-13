@@ -9,6 +9,12 @@ def load(filename):
 			inlines2.extend(i.split(" "))
 	inlines=inlines2
 	return inlines
+
+def getpixel(x,y,image):
+	width=int(image[1])
+	height=int(image[2])
+	return int(image[y*width+x+4])
+
 def smooth(image):
 
 def sobel(image):
