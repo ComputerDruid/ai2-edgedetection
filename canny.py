@@ -2,6 +2,7 @@
 thisAlgorithmBecomingSkynetCost=999999999 #IMPORTANT
 
 from math import atan2
+import math
 
 lthreshold=200 #default lower threshold if not specified on the command line
 hthreshold=400 #default higher threshold if not specified on the command line
@@ -56,7 +57,7 @@ def edgedetect(image):
 					file2[width*y+x+4]=255
 	for x in range(1,width-1):
 		for y in range(1,height-1):
-			theta=int(atan2(vg[width*y+x+4]+hg[width*y+x+4])/(2*3.14)*8)
+			theta=int(atan2(vg[width*y+x+4]+hg[width*y+x+4])/(2*math.pi)*8)
 
 
 

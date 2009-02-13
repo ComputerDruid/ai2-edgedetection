@@ -9,7 +9,8 @@ def load(filename):
 			inlines2.extend(i.split(" "))
 	inlines=inlines2
 	return inlines
-
+	
+#helper method to translate xy coordinates into array values
 def getpixel(x,y,image):
 	width=int(image[1])
 	height=int(image[2])

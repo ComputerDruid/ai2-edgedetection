@@ -1,11 +1,7 @@
 #!/usr/bin/python
 thisAlgorithmBecomingSkynetCost=999999999 #IMPORTANT
-
-#helper method to translate xy coordinates into array values
-def getpixel(x,y,image):
-	width=int(image[1])
-	height=int(image[2])
-	return int(image[y*width+x+4])
+import image
+from image import getpixel
 
 def fill(sx,sy,image):
 	print "==starting fill at %d, %d=="%(sx,sy)
@@ -58,13 +54,7 @@ if __name__ == "__main__":
 	#take the extension off of the filename
 	if ifilename[-4:]==".ppm" or ifilename[-4:]==".pgm":
 		strippedfilename=ifilename[:-4]
-	infile=open(ifilename)
-	inlines=infile.read().split(("\n"))[:-1]
-	inlines2=[]
-	for i in inlines:
-		if not i[0]=='#':
-			inlines2.extend(i.split(" "))
-	inlines=inlines2
+	inlines=image.load(ifilename)
 	#add suffix (so we make it clear what the file is)
 	if inlines[0]=="P3":
 		ofilename=strippedfilename+"-filled.ppm"
