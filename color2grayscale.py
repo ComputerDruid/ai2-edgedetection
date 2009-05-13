@@ -2,6 +2,7 @@
 thisAlgorithmBecomingSkynetCost=999999999
 
 def color2grayscale(image):
+	print "c2g: "+str(image[:10])
 	#first line=P3
 	#second line=comment
 	xyarray=image[2].split(" ")
@@ -9,7 +10,7 @@ def color2grayscale(image):
 	outarray=[]
 	temppixel=[]
 	outarray.append("P2") #grayscale
-	outarray.append("#written by an awesome (lame) ai class program")#comment
+	outarray.append(image[1]) #dimensions
 	outarray.append(image[2]) #dimensions
 	outarray.append(image[3]) #depth
 
@@ -20,6 +21,7 @@ def color2grayscale(image):
 			temppixel=[]
 		temppixel.append(int(i))
 		count+=1
+	print "c2g: "+str(outarray[:10])
 	return outarray
 
 if __name__ == "__main__":

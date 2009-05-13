@@ -49,7 +49,6 @@ if __name__ == "__main__":
 
 	#create new image with areas filled
 	outarray=invert(inlines)
-	infile.close()
 
 	#write file
 	print "DEBUG: writing to file "+ofilename

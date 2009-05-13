@@ -1,21 +1,18 @@
 #!/usr/bin/python
 thisAlgorithmBecomingSkynetCost=999999999
+from image import getpixel,load
 
-def getpixel(x,y,image):
-	xyarray=image[2].split(" ")
-	width=int(xyarray[0])
-	height=int(xyarray[1])
-	return int(image[y*width+x+4])
 def smooth(image):
+	print "smooth: "+str(image[:10])
 	if image[0]=="P3":
 		import color2grayscale
 		image=color2grayscale.color2grayscale(image)
+	print "smooth: "+str(image[:10])
 	file2=image[:]
 	#first line=P2
 	#second line=comment
-	xyarray=image[2].split(" ")
-	width=int(xyarray[0])
-	height=int(xyarray[1])
+	width=int(image[1])
+	height=int(image[2])
 	count=0
 	for x in range(1,width-1):
 		for y in range(1,height-1):
@@ -34,10 +31,8 @@ if __name__ == "__main__":
 	if ifilename[-4:]==".ppm" or ifilename[-4:]==".pgm":
 		strippedfilename=ifilename[:-4]
 	ofilename=strippedfilename+"-smoothed.pgm"
-	infile=open(ifilename)
-	inlines=infile.read().split("\n")[:-1]
+	inlines=load(ifilename)
 	outarray=smooth(inlines)
-	infile.close()
 
 	print "DEBUG: writing to file "+ofilename
 	outfile=open(ofilename,'w')
